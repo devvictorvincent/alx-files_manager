@@ -7,9 +7,9 @@ class RedisClient{
 		this.redisClient.on('error', (error) =>{
 		console.log(error)
 		})
-		const getAsync = promisify(this.redisClient.get).bind(this.redisClient);
-		const setAsync = promisify(this.redisClient.set).bind(this.redisClient);
-		const delAsync = promisify(this.redisClient.del).bind(this.redisClient);
+		this.getAsync = promisify(this.redisClient.get).bind(this.redisClient);
+		thissetAsync = promisify(this.redisClient.set).bind(this.redisClient);
+		this.delAsync = promisify(this.redisClient.del).bind(this.redisClient);
 
 	}
 	  isAlive(){
