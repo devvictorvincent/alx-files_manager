@@ -8,7 +8,7 @@ class RedisClient{
 		console.log(error)
 		})
 		this.getAsync = promisify(this.redisClient.get).bind(this.redisClient);
-		thissetAsync = promisify(this.redisClient.set).bind(this.redisClient);
+		this.setAsync = promisify(this.redisClient.set).bind(this.redisClient);
 		this.delAsync = promisify(this.redisClient.del).bind(this.redisClient);
 
 	}
@@ -20,7 +20,7 @@ class RedisClient{
 
 	async get(key){
 		try {
-			const value = getAsync(key);
+			const value = this.getAsync(key);
 			return value
 			
 		} catch (error) {
