@@ -1,14 +1,13 @@
-import {MongoClient} from 'mongodb'
+import { MongoClient } from 'mongodb';
 
-
-class DBClient{
+class DBClient {
     constructor(){
         const host = process.env.DB_HOST || 'localhost';
         const port = process.envDB_PORT || 27017;
         const database = process.env.DB_DATABASE || 'files_manager';
 
         const url = `mongodb://${host}:${port}`;
-        this.mongoClient = new MongoClient(url, {useUnifiedTopolofy: true});
+        this.mongoClient = new MongoClient(url, { useUnifiedTopolofy: true });
         this.db = null;
 
         this.mongoClient.connect()
