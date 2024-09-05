@@ -22,9 +22,9 @@ class DBClient {
     return this.mongoClient && this.mongoClient.isConnected();
   }
 
-  async nbusers() {
+  async nbUsers() {
     try {
-      const userCollection = this.dbconnection('users');
+      const userCollection = this.db.collection('users');
       return await userCollection.countDocuments();
     } catch (error) {
       console.error(error);
