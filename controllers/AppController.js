@@ -5,10 +5,10 @@ const getStatus = async (req, res) => {
   try {
     // Check Redis connection
     const redisAlive = await RedisClient.ping(); // Adjust if your RedisClient method differs
-    
+
     // Check DB connection
     const dbAlive = await DBClient.isConnected(); // Implement isConnected method in DBClient
-    
+
     res.status(200).json({
       redis: redisAlive,
       db: dbAlive,
@@ -24,7 +24,7 @@ const getStats = async (req, res) => {
     // Count users and files
     const usersCount = await DBClient.countDocuments('users'); // Adjust if your DBClient method differs
     const filesCount = await DBClient.countDocuments('files'); // Adjust if your DBClient method differs
-    
+
     res.status(200).json({
       users: usersCount,
       files: filesCount,
