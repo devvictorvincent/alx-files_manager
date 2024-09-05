@@ -5,7 +5,9 @@ import redisClient from '../utils/redis';
 
 class UsersController {
     static async postNew (request, response) {
-      const { email, password } = request.body;
+      const email = request.body ? request.body.email : null;
+      const password = request.body ? request.body.password : null;
+      
       if (!email) {
         response.status(400).json({ error: 'Missing email' });
       }
@@ -33,7 +35,12 @@ class UsersController {
         response.status(500).json({ error: 'Server error' });
       }
     }
+    
+    static async getMe(request, response) {
+    const { user } = req;
+
+    response.status(200).json({ email: user.email, id: user._id.toString() });
+  }
 }  
 
-const UserController = new UsersController();
-export default UserController;
+export default UsersController;
